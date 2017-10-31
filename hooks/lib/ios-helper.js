@@ -26,7 +26,9 @@ module.exports = {
         // File format information: http://www.monobjc.net/xcode-project-file-format.html
         var xcodeProject = xcode.project(xcodeProjectPath);
         xcodeProject.parseSync();
-
+        
+        xcodeProject.updateBuildProperty('ENABLE_TESTABILITY', 'NO');
+        xcodeProject.updateBuildProperty('DEBUG_INFORMATION_FORMAT', 'dwarf-with-dsym');
         // Build the body of the script to be executed during the build phase.
         var script = '"' + '${SRCROOT}' + "/\\\"" + utilities.getAppName(context) + "\\\"/Plugins/cordova-fabric-plugin/Fabric.framework/run " + pluginConfig.apiKey + " " + pluginConfig.apiSecret + '"';
 

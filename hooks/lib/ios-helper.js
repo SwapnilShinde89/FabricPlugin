@@ -17,7 +17,7 @@ module.exports = {
      * tool with the API and Secret keys. This tool is used to upload the debug symbols
      * (dSYMs) so that Crashlytics can display stack trace information in it's web console.
      */
-    addShellScriptBuildPhase: function(context, xcodeProjectPath) {
+    addShellScriptBuildPhase: function (context, xcodeProjectPath) {
 
         var pluginConfig = utilities.getPluginConfig("ios");
         var xcode = context.requireCordovaModule("xcode");
@@ -27,27 +27,11 @@ module.exports = {
         var xcodeProject = xcode.project(xcodeProjectPath);
         xcodeProject.parseSync();
 
-        xcodeProject.updateBuildProperty('ENABLE_BITCODE', 'NO');
-        xcodeProject.updateBuildProperty('ENABLE_TESTABILITY', 'NO');
-        xcodeProject.updateBuildProperty('DEBUG_INFORMATION_FORMAT', 'dwarf-with-dsym');
-
         // Build the body of the script to be executed during the build phase.
-        // ../../plugins/plugin-id/lib/ios/Crashlytics.framework/run API_KEY SECRET_KEY
-        var script = [
-            "\"",
-            utilities.getAppName(context),
-            "/Plugins/",
-            utilities.getPluginId(),
-            "/Crashlytics.framework/run ",
-            pluginConfig.apiKey,
-            " ",
-            pluginConfig.apiSecret,
-            "\""
-        ].join("");
+        var script = '"' + '${SRCROOT}' + "/\\\"" + utilities.getAppName(context) + "\\\"/Plugins/cordova-fabric-plugin/Fabric.framework/run " + pluginConfig.apiKey + " " + pluginConfig.apiSecret + '"';
 
         // Generate a unique ID for our new build phase.
         var id = xcodeProject.generateUuid();
-
         // Create the build phase.
         xcodeProject.hash.project.objects.PBXShellScriptBuildPhase[id] = {
             isa: "PBXShellScriptBuildPhase",
@@ -89,7 +73,7 @@ module.exports = {
      * This helper is used to remove the build phase from the XCode project that was added
      * by the addShellScriptBuildPhase() helper method.
      */
-    removeShellScriptBuildPhase: function(context, xcodeProjectPath) {
+    removeShellScriptBuildPhase: function (context, xcodeProjectPath) {
 
         var xcode = context.requireCordovaModule("xcode");
 

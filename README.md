@@ -4,9 +4,9 @@ This is a [Cordova](http://cordova.apache.org/) plugin for [Fabric.io](https://w
 
 It requires Cordova 3.x or newer (tested on 5.4.0) and has APIs for iOS and Android.
 
-The iOS version uses Fabric SDK 1.6.9 and Crashlytics SDK 3.8.2 framework bundles which are located in `lib/ios`.
+The iOS version uses Fabric SDK 1.6.12 and Crashlytics SDK 3.8.5 framework bundles which are located in `lib/ios`.
 
-The Android version uses Gradle to get the Fabric SDK (`io.fabric.tools:gradle:1.+`) and the Crashlytics SDK (`com.crashlytics.sdk.android:crashlytics:2.5.5`) from Maven repositories when the plugin is added.
+The Android version uses Gradle to get the Fabric SDK (`io.fabric.tools:gradle:1.+`) and the Crashlytics SDK (`com.crashlytics.sdk.android:crashlytics:2.6.8`) from Maven repositories when the plugin is added.
 
 # Install
 
@@ -56,6 +56,9 @@ window.fabric.Crashlytics.sendNonFatalCrash("Error message");
 //iOS only. Send message and error code
 window.fabric.Crashlytics.addLog("about to send a non fatal crash for testing!");
 window.fabric.Crashlytics.recordError("Error message", -1);
+
+//Android only. Send stack trace with non fatal crash (requires https://www.stacktracejs.com/)
+window.fabric.Crashlytics.sendNonFatalCrash("Error message", StackTrace.getSync());
 ```
 
 Issue Grouping

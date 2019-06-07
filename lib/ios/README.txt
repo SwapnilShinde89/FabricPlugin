@@ -11,5 +11,5 @@ https://github.com/CocoaPods/Specs/blob/master/Specs/Crashlytics/3.8.5/Crashlyti
 
 Framework package ZIPs:
 
-https://kit-downloads.fabric.io/cocoapods/fabric/1.6.12/fabric.zip
-https://kit-downloads.fabric.io/cocoapods/crashlytics/3.8.5/crashlytics.zip
+https://kit-downloads.fabric.io/cocoapods/fabric/1.7.5/fabric.zip
+https://kit-downloads.fabric.io/cocoapods/crashlytics/3.10.1/crashlytics.zip

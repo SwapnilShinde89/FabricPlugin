@@ -1,12 +1,14 @@
 # Fabric Plugin for Cordova
-
+[![Backers on Open Collective](https://opencollective.com/FabricPlugin/backers/badge.svg)](#backers)
+ [![Sponsors on Open Collective](https://opencollective.com/FabricPlugin/sponsors/badge.svg)](#sponsors) 
+ 
 This is a [Cordova](http://cordova.apache.org/) plugin for [Fabric.io](https://www.fabric.io)'s Crashlytics and Answers services.
 
-It requires Cordova 3.x or newer (tested on 5.4.0) and has APIs for iOS and Android.
+It requires Cordova 6.x or newer (tested on 7.0.0) and has APIs for iOS and Android.
 
-The iOS version uses Fabric SDK 1.6.12 and Crashlytics SDK 3.8.5 framework bundles which are located in `lib/ios`.
+The iOS version uses Fabric SDK 1.7.5 and Crashlytics SDK 3.10.1 framework bundles which are located in `lib/ios`.
 
-The Android version uses Gradle to get the Fabric SDK (`io.fabric.tools:gradle:1.+`) and the Crashlytics SDK (`com.crashlytics.sdk.android:crashlytics:2.6.8`) from Maven repositories when the plugin is added.
+The Android version uses Gradle to get the Fabric SDK (`io.fabric.tools:gradle:1.+`) and the Crashlytics SDK (`com.crashlytics.sdk.android:crashlytics:2.9.1`) from Maven repositories when the plugin is added.
 
 # Install
 
@@ -111,6 +113,26 @@ For iOS, our build hook adds a build script phase block to execute Fabric's uplo
 
 For Android, our build hook modifies the `build.gradle` file to delegate to Fabric's uploader Gradle task.
 
+## Updating Fabric and Crashlytics
+
+Fabric and Crashlytics can be udpated via [scripts/add-packages.sh](./scripts/add-packages.sh). This script creates a temporary directory, obtains packages from their cocoapods download locations, and overwrites the frameworks in [lib/ios](./lib/ios).
+
+To run the package update script:
+
+```sh
+npm run add-packages
+```
+
+
+The desired package versions are pulled from [package.json](./package.json):
+
+```json
+"packages": {
+    "fabric": "1.7.2",
+    "crashlytics": "3.9.3"
+}
+```
+
 # Contributing
 
 If you wish to contribute please see `CONTRIBUTING.md`.
@@ -122,3 +144,33 @@ If you wish to contribute please see `CONTRIBUTING.md`.
 - Based on the following plugins:
  - https://github.com/francescobitmunks/cordova-plugin-crashlytics
  - https://github.com/smistry-toushay/cordova-crashlytics-plugin
+
+## Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="graphs/contributors"><img src="https://opencollective.com/FabricPlugin/contributors.svg?width=890&button=false" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/FabricPlugin#backer)]
+
+<a href="https://opencollective.com/FabricPlugin#backers" target="_blank"><img src="https://opencollective.com/FabricPlugin/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/FabricPlugin#sponsor)]
+
+<a href="https://opencollective.com/FabricPlugin/sponsor/0/website" target="_blank"><img src="https://opencollective.com/FabricPlugin/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/FabricPlugin/sponsor/1/website" target="_blank"><img src="https://opencollective.com/FabricPlugin/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/FabricPlugin/sponsor/2/website" target="_blank"><img src="https://opencollective.com/FabricPlugin/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/FabricPlugin/sponsor/3/website" target="_blank"><img src="https://opencollective.com/FabricPlugin/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/FabricPlugin/sponsor/4/website" target="_blank"><img src="https://opencollective.com/FabricPlugin/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/FabricPlugin/sponsor/5/website" target="_blank"><img src="https://opencollective.com/FabricPlugin/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/FabricPlugin/sponsor/6/website" target="_blank"><img src="https://opencollective.com/FabricPlugin/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/FabricPlugin/sponsor/7/website" target="_blank"><img src="https://opencollective.com/FabricPlugin/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/FabricPlugin/sponsor/8/website" target="_blank"><img src="https://opencollective.com/FabricPlugin/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/FabricPlugin/sponsor/9/website" target="_blank"><img src="https://opencollective.com/FabricPlugin/sponsor/9/avatar.svg"></a>
+
+
